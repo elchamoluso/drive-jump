@@ -1,0 +1,27 @@
+# --- Tu configuración y datos personales (NO se publican) ---
+rutas.config.sh
+rutas.generated.sh
+custom-aliases.sh
+
+# Compat: artefactos del sistema antiguo (por si quedan en algún clon)
+rutas.sh
+mac-rutas.sh
+extra-aliases.sh
+
+# --- Artefactos generados (se regeneran; no se versionan) ---
+dashboard.html
+dashboard.html.tmp
+*.tmp
+.serve.log
+
+# --- Herramientas / editor ---
+.claude/
+node_modules/
+
+# --- Backups del instalador ---
+*.drivejump.bak
+
+# --- OS / Drive ---
+.DS_Store
+Icon?
+*~

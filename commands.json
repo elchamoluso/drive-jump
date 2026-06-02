@@ -1,0 +1,98 @@
+{
+  "_comment": "Comandos copiables del dashboard. Verificados contra docs oficiales (2026-06) y los binarios locales. Edita libremente: añade categorías o comandos y ejecuta rutas-web para reflejarlo. Cada categoría puede tener 'icon' y 'source' (enlace a docs oficiales).",
+  "categories": [
+    {
+      "name": "Claude Code",
+      "icon": "🤖",
+      "source": "https://code.claude.com/docs/en/cli-reference",
+      "commands": [
+        { "cmd": "claude", "desc": "Inicia una sesión interactiva en el directorio actual (puedes pasar un prompt: claude \"explica este proyecto\")." },
+        { "cmd": "claude -p \"consulta\"", "desc": "Modo print/no interactivo: ejecuta la consulta y sale; ideal para scripts y pipes (cat log | claude -p \"resume\")." },
+        { "cmd": "claude -c", "desc": "Continúa la conversación más reciente del directorio actual (alias de --continue)." },
+        { "cmd": "claude --resume \"<sesion>\"", "desc": "Reanuda una sesión concreta por ID o nombre, o abre el selector interactivo (alias -r)." },
+        { "cmd": "claude --dangerously-skip-permissions", "desc": "Omite todas las confirmaciones de permisos (equivale a --permission-mode bypassPermissions); usar con cuidado." },
+        { "cmd": "claude --model <modelo>", "desc": "Fija el modelo de la sesión por alias (sonnet, opus) o nombre completo (p.ej. claude-sonnet-4-6)." },
+        { "cmd": "claude --add-dir <ruta>", "desc": "Agrega directorios extra de trabajo para que Claude lea y edite archivos fuera del cwd." },
+        { "cmd": "claude --permission-mode <modo>", "desc": "Arranca en un modo de permisos: default, acceptEdits, plan, auto, dontAsk o bypassPermissions." },
+        { "cmd": "claude --agents '<JSON>'", "desc": "Define subagentes personalizados al vuelo vía JSON (campos del frontmatter más un campo prompt)." },
+        { "cmd": "claude agents", "desc": "Gestiona y lanza agentes en segundo plano en paralelo (--json para scripting)." },
+        { "cmd": "claude mcp", "desc": "Configura y gestiona los servidores MCP (Model Context Protocol)." },
+        { "cmd": "claude auth status", "desc": "Muestra el estado de autenticación (JSON); usa --text para salida legible." },
+        { "cmd": "claude doctor", "desc": "Diagnostica la salud de la instalación, el auto-updater y los ajustes." },
+        { "cmd": "claude update", "desc": "Comprueba e instala la última versión de Claude Code." },
+        { "cmd": "claude -v", "desc": "Muestra el número de versión (alias --version)." },
+        { "cmd": "/clear", "desc": "En sesión: limpia el contexto de la conversación." },
+        { "cmd": "/compact", "desc": "En sesión: resume y compacta el contexto para liberar tokens." },
+        { "cmd": "/resume", "desc": "En sesión: reanuda otra conversación." },
+        { "cmd": "/agents", "desc": "En sesión: gestiona los subagentes." },
+        { "cmd": "/mcp", "desc": "En sesión: gestiona los servidores MCP." },
+        { "cmd": "/model", "desc": "En sesión: cambia el modelo." },
+        { "cmd": "/help", "desc": "En sesión: muestra la ayuda y los comandos disponibles." }
+      ]
+    },
+    {
+      "name": "agy / Antigravity",
+      "icon": "🛸",
+      "source": "https://antigravity.google/docs/cli-using",
+      "commands": [
+        { "cmd": "agy", "desc": "Inicia la sesión interactiva (TUI) en el directorio actual." },
+        { "cmd": "agy --dangerously-skip-permissions", "desc": "Auto-aprueba TODOS los permisos de herramientas sin preguntar (modo YOLO); usar con cuidado." },
+        { "cmd": "agy -c", "desc": "Continúa/retoma la conversación más reciente (alias de --continue)." },
+        { "cmd": "agy --conversation <id>", "desc": "Reanuda una conversación anterior concreta indicando su ID." },
+        { "cmd": "agy -p \"<prompt>\"", "desc": "Modo no interactivo: ejecuta un solo prompt e imprime la respuesta (alias de --print/--prompt)." },
+        { "cmd": "agy -i \"<prompt>\"", "desc": "Lanza un prompt inicial y deja la sesión abierta para seguir interactuando (alias de --prompt-interactive)." },
+        { "cmd": "agy --add-dir <ruta>", "desc": "Añade otro directorio al workspace (repetible) para que el agente lo lea y edite." },
+        { "cmd": "agy --sandbox", "desc": "Ejecuta con restricciones de terminal (sandbox) activadas." },
+        { "cmd": "agy --print-timeout <dur>", "desc": "Ajusta el timeout de espera del modo print (por defecto 5m0s)." },
+        { "cmd": "agy update", "desc": "Actualiza el CLI a la última versión." },
+        { "cmd": "agy plugin list", "desc": "Lista los plugins importados/instalados (plugins es alias de plugin)." },
+        { "cmd": "agy plugin install <plugin@marketplace>", "desc": "Instala un plugin; también: uninstall, enable, disable, import, validate, link." },
+        { "cmd": "agy changelog", "desc": "Muestra el changelog y las notas de la versión." }
+      ]
+    },
+    {
+      "name": "git",
+      "icon": "🌿",
+      "source": "https://git-scm.com/docs",
+      "commands": [
+        { "cmd": "git status", "desc": "Muestra el estado del área de trabajo: archivos modificados, en stage y sin seguimiento." },
+        { "cmd": "git add -A", "desc": "Añade al stage todos los cambios (nuevos, modificados y borrados) para el próximo commit." },
+        { "cmd": "git commit -m \"mensaje\"", "desc": "Registra los cambios en stage en el repositorio con un mensaje descriptivo." },
+        { "cmd": "git pull", "desc": "Descarga e integra los cambios del repositorio remoto en tu rama actual." },
+        { "cmd": "git push", "desc": "Sube tus commits locales y refs al repositorio remoto." },
+        { "cmd": "git clone <url>", "desc": "Clona un repositorio remoto en un directorio nuevo local." },
+        { "cmd": "git init", "desc": "Crea un repositorio Git vacío nuevo en el directorio actual." },
+        { "cmd": "git branch", "desc": "Lista, crea o elimina ramas del repositorio." },
+        { "cmd": "git checkout -b <rama>", "desc": "Crea una rama nueva y cambia a ella en un solo paso." },
+        { "cmd": "git switch <rama>", "desc": "Cambia a otra rama existente (alternativa moderna a checkout)." },
+        { "cmd": "git merge <rama>", "desc": "Fusiona el historial de otra rama en la rama actual." },
+        { "cmd": "git log --oneline --graph -10", "desc": "Muestra los últimos 10 commits en formato compacto con grafo de ramas." },
+        { "cmd": "git diff", "desc": "Muestra los cambios línea por línea aún no añadidos al stage." },
+        { "cmd": "git stash", "desc": "Guarda temporalmente los cambios sin commitear para limpiar el área de trabajo." },
+        { "cmd": "git restore <archivo>", "desc": "Restaura archivos del área de trabajo descartando cambios locales." },
+        { "cmd": "git remote -v", "desc": "Lista los repositorios remotos configurados con sus URLs." },
+        { "cmd": "git fetch", "desc": "Descarga objetos y refs del remoto sin integrarlos en tu rama." }
+      ]
+    },
+    {
+      "name": "gws (Google Workspace)",
+      "icon": "☁️",
+      "source": "https://github.com/googleworkspace/cli",
+      "commands": [
+        { "cmd": "gws auth status", "desc": "Muestra el estado de autenticación; comprueba que el token sigue válido antes de cualquier operación." },
+        { "cmd": "gws auth login -s drive,gmail,sheets,docs,slides,calendar,tasks,people,forms,script", "desc": "Reautentica vía OAuth2 abriendo navegador y solicitando los scopes indicados (usar cuando el token expira)." },
+        { "cmd": "gws schema drive.files.list", "desc": "Introspecciona métodos y campos de cualquier service.resource.method antes de inventar parámetros." },
+        { "cmd": "gws drive files list --params '{\"pageSize\":10}' --format table", "desc": "Lista archivos de Drive (10 más recientes) en formato tabla legible." },
+        { "cmd": "gws drive files create --json '{\"name\":\"informe.pdf\"}' --upload ./informe.pdf", "desc": "Crea un archivo en Drive subiendo contenido local con metadatos en el cuerpo JSON." },
+        { "cmd": "gws sheets spreadsheets values get --params '{\"spreadsheetId\":\"ID\",\"range\":\"Hoja1!A1:C10\"}'", "desc": "Lee un rango de una hoja de cálculo (envuelve el rango con ! en comillas simples)." },
+        { "cmd": "gws sheets spreadsheets batchUpdate --params '{\"spreadsheetId\":\"ID\"}' --json '{\"requests\":[]}'", "desc": "Aplica múltiples cambios (formato, filas, fórmulas) a una hoja en una sola operación batch." },
+        { "cmd": "gws docs +write --document ID --text \"Contenido a anadir\"", "desc": "Helper para escribir/añadir texto en un Google Doc sin construir el cuerpo a mano." },
+        { "cmd": "gws gmail +send --to alguien@example.com --subject \"Hola\" --body \"Mensaje\"", "desc": "Helper para enviar un correo rápidamente sin armar el JSON MIME." },
+        { "cmd": "gws gmail +triage", "desc": "Helper: resumen de la bandeja sin leer (remitente, asunto, fecha) de los no leídos." },
+        { "cmd": "gws gmail users messages list --params '{\"userId\":\"me\"}' --page-all", "desc": "Lista mensajes de Gmail autopaginando todos los resultados (NDJSON, una línea por página)." },
+        { "cmd": "gws calendar +agenda --timezone Europe/Lisbon", "desc": "Helper que muestra los próximos eventos del calendario en la zona horaria indicada." },
+        { "cmd": "gws calendar +insert", "desc": "Helper para crear un evento nuevo (ejecuta con --help para ver sus opciones)." }
+      ]
+    }
+  ]
+}
